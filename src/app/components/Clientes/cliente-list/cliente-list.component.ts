@@ -21,7 +21,7 @@ export class ClienteListComponent {
   readonly dialog = inject(MatDialog);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  //hola 
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit() {
