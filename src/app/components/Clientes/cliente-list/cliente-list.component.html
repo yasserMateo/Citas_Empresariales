@@ -1,0 +1,53 @@
+<button mat-button (click)="openDialog()">Crear Cliente</button>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="clienteId">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{ element.clienteId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreCliente">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nombreCliente }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+      <td mat-cell *matCellDef="let element"> {{ element.telefono }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.status === 'A' ? 'Activo' : 'Inactivo' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editCliente(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteCliente(element.clienteId)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of clientes">
+  </mat-paginator>
+</div>

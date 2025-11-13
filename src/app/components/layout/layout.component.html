@@ -1,0 +1,19 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-toolbar>
+        <button mat-icon-button (click)="drawer.toggle()" aria-label="Toggle menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Menu</span>
+    </mat-toolbar>
+
+    <mat-drawer #drawer class="example-sidenav" mode="over">
+        <a mat-button routerLink="cliente">Clientes</a>
+        <a mat-button routerLink="parentesco">Parentesco</a>
+        <a mat-button routerLink="Referencia_Empleado">Referencia Empleado</a>
+        <a mat-button routerLink="Usuarios">Usuarios</a>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

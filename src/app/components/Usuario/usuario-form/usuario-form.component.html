@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>
+  {{ form.get('idUsuario')?.value ? 'Editar Usuario' : 'Agregar Usuario' }}
+</h2>
+
+<mat-dialog-content class="dialog-body">
+  <form [formGroup]="form">
+
+    <!-- ID Usuario -->
+    <ng-container *ngIf="form.get('idUsuario')?.value !== null">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ID Usuario</mat-label>
+        <input matInput formControlName="idUsuario" readonly>
+      </mat-form-field>
+    </ng-container>
+
+    <!-- ID Empleado -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ID Empleado</mat-label>
+      <input matInput type="number" formControlName="idEmpleado">
+    </mat-form-field>
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+
+    <!-- Nombre Usuario -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="nombreUsuario">
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="contrasena">
+    </mat-form-field>
+
+    <!-- Fecha Creación -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fecha de creación</mat-label>
+      <input 
+        matInput 
+        formControlName="fechaDeCreacion"
+        [matDatepicker]="picker1">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Último cambio contraseña -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Último cambio de contraseña</mat-label>
+      <input 
+        matInput 
+        formControlName="ultimoCambioDeContrasena"
+        [matDatepicker]="picker2">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Rol -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ID Rol</mat-label>
+      <input matInput type="number" formControlName="idRol">
+    </mat-form-field>
+
+    <!-- Activación -->
+    <mat-checkbox formControlName="activacion" class="checkbox">
+      Usuario activo
+    </mat-checkbox>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardar()" [disabled]="form.invalid">
+    Guardar
+  </button>
+</mat-dialog-actions>

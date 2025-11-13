@@ -1,0 +1,60 @@
+<button mat-button (click)="openDialog()">Crear Usuario</button>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- ID Usuario -->
+    <ng-container matColumnDef="IdUsuario">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{ element.idUsuario }} </td>
+    </ng-container>
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="Nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+    </ng-container>
+
+    <!-- Nombre de Usuario -->
+    <ng-container matColumnDef="NombreUsuario">
+      <th mat-header-cell *matHeaderCellDef> Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{ element.nombreUsuario }} </td>
+    </ng-container>
+
+    <!-- Rol -->
+    <ng-container matColumnDef="IdRol">
+      <th mat-header-cell *matHeaderCellDef> Rol </th>
+      <td mat-cell *matCellDef="let element"> {{ element.idRol }} </td>
+    </ng-container>
+
+    <!-- Activación -->
+    <ng-container matColumnDef="Activacion">
+      <th mat-header-cell *matHeaderCellDef> Activo </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.activacion ? 'Sí' : 'No' }}
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editUsuario(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteUsuario(element.idUsuario)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of usuarios">
+  </mat-paginator>
+</div>

@@ -1,0 +1,37 @@
+<button mat-button (click)="openDialog()">Crear Parentesco</button>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="idParentesco">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{ element.idParentesco }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="parentescoNombre">
+      <th mat-header-cell *matHeaderCellDef> Parentesco </th>
+      <td mat-cell *matCellDef="let element"> {{ element.parentescoNombre }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editParentesco(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteParentesco(element.idParentesco)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of parentescos">
+  </mat-paginator>
+</div>
