@@ -1,0 +1,49 @@
+
+<button mat-button (click)="openDialog()">Crear Tipo de Solicitud</button>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- ID -->
+    <ng-container matColumnDef="idTipoSolicitud">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{ element.idTipoSolicitud }} </td>
+    </ng-container>
+
+    <!-- Nombre del tipo de solicitud -->
+    <ng-container matColumnDef="tipoSolicitudNombre">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Solicitud </th>
+      <td mat-cell *matCellDef="let element"> {{ element.tipoSolicitudNombre }} </td>
+    </ng-container>
+
+    <!-- Activación -->
+    <ng-container matColumnDef="activacion">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.activacion ? 'Activo' : 'Inactivo' }}
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="editTipoSolicitud(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteTipoSolicitud(element.idTipoSolicitud)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of tipos de solicitudes">
+  </mat-paginator>
+</div>

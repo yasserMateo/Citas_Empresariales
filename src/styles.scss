@@ -1,0 +1,77 @@
+
+body {
+  background-color: #f5f7f5; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #1b3b2a; 
+}
+
+
+.mat-elevation-z8,
+.container-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0f2e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 16px;
+}
+
+
+.mat-mdc-dialog-title {
+  color: #145a32;
+  font-weight: 600;
+}
+
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  color: #2e7d32; 
+}
+
+
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-button.mat-primary {
+  background-color: #2e7d32 !important;
+  color: #ffffff !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-button.mat-primary:hover {
+  background-color: #256628 !important;
+}
+
+
+.mat-mdc-icon-button.mat-warn mat-icon {
+  color: #c62828;
+}
+
+
+.mat-mdc-paginator,
+.mat-mdc-table thead {
+  background-color: #e8f5e9;
+}
+
+.mat-mdc-header-cell {
+  color: #1b5e20;
+  font-weight: 600;
+}
+
+
+.mat-mdc-row:hover {
+  background-color: #f1fbf4;
+}
+
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__track {
+  background-color: #a5d6a7 !important;
+}
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked .mdc-switch__handle {
+  background-color: #2e7d32 !important;
+}

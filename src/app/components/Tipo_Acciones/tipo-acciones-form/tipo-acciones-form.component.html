@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Agregar Tipo de Acción</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="tipoAccionForm">
+
+    <!-- Nombre / descripción de la acción -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Acción</mat-label>
+      <input matInput formControlName="accion" />
+    </mat-form-field>
+
+    <!-- Es débito -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo de movimiento</mat-label>
+      <mat-select formControlName="esDebito">
+        <mat-option [value]="true">Débito</mat-option>
+        <mat-option [value]="false">Crédito</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Activación -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="activacion">
+        <mat-option [value]="true">Activo</mat-option>
+        <mat-option [value]="false">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="guardar()"
+    [disabled]="tipoAccionForm.invalid"
+  >
+    Guardar
+  </button>
+</mat-dialog-actions>

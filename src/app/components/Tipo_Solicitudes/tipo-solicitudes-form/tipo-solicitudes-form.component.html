@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>
+  {{ tipoSolicitudForm.get('idTipoSolicitud')?.value ? 'Editar Tipo de Solicitud' : 'Agregar Tipo de Solicitud' }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="tipoSolicitudForm">
+
+    <!-- Nombre del tipo de solicitud -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo de Solicitud</mat-label>
+      <input matInput formControlName="tipoSolicitudNombre" />
+      <mat-error *ngIf="tipoSolicitudForm.get('tipoSolicitudNombre')?.hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Activación -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="activacion">
+        <mat-option [value]="true">Activo</mat-option>
+        <mat-option [value]="false">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="guardar()"
+    [disabled]="tipoSolicitudForm.invalid"
+  >
+    Guardar
+  </button>
+</mat-dialog-actions>
