@@ -9,6 +9,10 @@ import { Usuario } from '../../../models/usuario.model';
 import { UsuarioService } from '../../../services/usuario.service';
 import { UsuarioFormComponent } from '../usuario-form/usuario-form.component';
 
+
+import { Roles } from '../../../models/roles.model';
+import { RolesService } from '../../../services/roles.service';
+
 @Component({
   selector: 'app-usuario-list',
   standalone: true,
@@ -30,12 +34,18 @@ export class UsuarioListComponent {
   dataSource = new MatTableDataSource<Usuario>([]);
   readonly dialog = inject(MatDialog);
 
+  roles: Roles[] = [];       
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private rolesService: RolesService   
+  ) {}
 
   ngOnInit() {
     this.cargarUsuarios();
+    this.cargarRoles();       
   }
 
   ngAfterViewInit() {
@@ -51,15 +61,29 @@ export class UsuarioListComponent {
     });
   }
 
+
+  private cargarRoles(): void {
+    this.rolesService.getRoles().subscribe({
+      next: (data) => {
+        this.roles = data;
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  getRolNombre(idRol: number): string {
+    const rol = this.roles.find(r => r.idRol === idRol);
+    return rol ? rol.rolNombre : idRol.toString();
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(UsuarioFormComponent, {
       width: '400px',
-      data: null   
+      data: null
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-  
         this.cargarUsuarios();
       }
     });
@@ -73,7 +97,6 @@ export class UsuarioListComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
         this.cargarUsuarios();
       }
     });
@@ -85,7 +108,6 @@ export class UsuarioListComponent {
         this.dataSource.data = this.dataSource.data.filter(
           u => u.idUsuario !== idUsuario
         );
-
       },
       error: (err) => console.error(err)
     });

@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>
+  {{ form.get('idSolicitudVaria')?.value ? 'Editar Solicitud' : 'Agregar Solicitud' }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+
+    <!-- ID solo en edición -->
+    <ng-container *ngIf="form.get('idSolicitudVaria')?.value !== null">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="idSolicitudVaria" readonly>
+      </mat-form-field>
+    </ng-container>
+
+    <!-- Id Tipo Solicitud -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Id Tipo de Solicitud</mat-label>
+      <input matInput type="number" formControlName="idTipoSolicitud" placeholder="Ej: 1">
+      <mat-error *ngIf="form.get('idTipoSolicitud')?.hasError('required')">
+        El tipo de solicitud es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Id Empleado -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Id Empleado</mat-label>
+      <input matInput type="number" formControlName="idEmpleado" placeholder="Ej: 25">
+      <mat-error *ngIf="form.get('idEmpleado')?.hasError('required')">
+        El Id del empleado es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Id Tipo Solicitud Varia -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Id Tipo Solicitud Varia</mat-label>
+      <input matInput type="number" formControlName="idTipoSolicitudVaria" placeholder="Ej: 2">
+      <mat-error *ngIf="form.get('idTipoSolicitudVaria')?.hasError('required')">
+        El tipo de solicitud varia es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Monto -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Monto</mat-label>
+      <input matInput type="number" step="0.01" formControlName="monto" placeholder="Ej: 15000">
+      <mat-error *ngIf="form.get('monto')?.hasError('required')">
+        El monto es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('monto')?.hasError('min')">
+        El monto debe ser mayor que 0.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de efectividad -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha de Efectividad</mat-label>
+      <input matInput type="date" formControlName="fechaEfectividad">
+    </mat-form-field>
+
+    <!-- Garante -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Garante</mat-label>
+      <input matInput formControlName="garante" placeholder="Nombre del garante">
+    </mat-form-field>
+
+    <!-- No. Resolución (fecha o dato según tu modelo) -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha Resolución</mat-label>
+      <input matInput type="date" formControlName="noResolucion">
+    </mat-form-field>
+
+    <!-- Fecha de registro -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fecha de Registro</mat-label>
+      <input matInput type="date" formControlName="fecha">
+      <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+        La fecha de registro es obligatoria.
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardar()" [disabled]="form.invalid">
+    Guardar
+  </button>
+</mat-dialog-actions>

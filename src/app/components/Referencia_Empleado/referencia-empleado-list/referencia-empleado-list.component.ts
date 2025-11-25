@@ -71,7 +71,7 @@ export class ReferenciaEmpleadoListComponent {
     });
   }
 
-  // devuelve el nombre del parentesco a partir del id
+
   getParentescoNombre(idParentesco: number): string {
     const p = this.parentescos.find(x => x.idParentesco === idParentesco);
     return p ? p.parentescoNombre : String(idParentesco);

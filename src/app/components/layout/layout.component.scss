@@ -6,6 +6,33 @@
   width: 240px;
 }
 
+.menu-link {
+  display: block;
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent; 
+}
+
+.menu-link.cdk-focused,
+.menu-link.cdk-program-focused,
+.menu-link.cdk-mouse-focused,
+.menu-link:focus {
+  background-color: transparent !important;
+}
+
+.menu-link:hover {
+
+  color: #2e7d32;
+}
+
+.menu-link.active-link {
+  background-color: #c8e6c9;
+  color: #1b5e20;
+}
+
 mat-toolbar {
   position: sticky;
   top: 0;
